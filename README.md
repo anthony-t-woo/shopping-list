@@ -1,26 +1,34 @@
-## The Golden Rule:
+!['wireframe for shopping list app'](/assets/wireframe.jpeg)
+!['data model for shopping list app'](/assets/data_model.png)
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+## HTML
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+    - h3 element for greeting
+    - Form to input shopping list item
+        - input for item
+        - input for quantity
+        - submit button
+    - Button to delete list
+    - Emtpty div to inject list data from database
 
-## Making a plan
+## Slices
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+### On load, user should be able to see a list of their shopping list items
 
-Additional considerations:
+    - fetch data from database
+    - render to state and append to dom
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+### On form submit, user should be able to add item to shopping list
+
+    - get data from form and insert as a new row to supabase
+    - fetch, render and append to display updated list
+
+### On click of list item, user should be able to mark the list item as bought (strike through text)
+
+    - click event listener for list item
+        - calls update row function to change bool of bought column to true
+
+### On click of delete list button, user should be able to delete their entire list
+
+    - click event listener for delete button
+    - calls delete function to delete all rows with matching user id
