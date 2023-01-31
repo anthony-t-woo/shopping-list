@@ -46,3 +46,7 @@ export async function getListItems() {
 export async function buyItem(id) {
     await client.from('shopping_list').update({ is_bought: true }).eq('id', id);
 }
+
+export async function deleteList() {
+    await client.from('shopping_list').delete().eq('user_id', getUser().id);
+}
