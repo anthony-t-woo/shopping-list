@@ -28,8 +28,13 @@ window.addEventListener('load', async () => {
 formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(formEl);
-    const insert = { item: formData.get('item'), quantity: formData.get('qty') };
+    const insert = {
+        item: formData.get('item'),
+        quantity: formData.get('qty'),
+        department_id: formData.get('dept'),
+    };
     formEl.reset();
+    console.log(insert);
     await createListItem(insert);
     fetchAndDisplayList();
 });
