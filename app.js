@@ -1,21 +1,33 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { checkAuth, createListItem } from './fetch-utils.js';
-
+import { checkAuth, createListItem, getListItems } from './fetch-utils.js';
+import { renderListItem } from './render-utils.js';
 checkAuth();
-
 /* Get DOM Elements */
 const formEl = document.querySelector('.add-item-form');
+const listContainerEl = document.querySelector('#list-container');
 /* State */
-let listData = [];
+let itemsData = [];
 /* Events */
-window.addEventListener('load', async () => {});
+window.addEventListener('load', async () => {
+    fetchAndDisplayList();
+});
 
 formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(formEl);
     const insert = { item: formData.get('item'), quantity: formData.get('qty') };
+    formEl.reset();
     await createListItem(insert);
+    fetchAndDisplayList();
 });
 /* Display Functions */
+async function fetchAndDisplayList() {
+    itemsData = await getListItems();
+    listContainerEl.textContent = '';
+    itemsData.forEach((item) => {
+        const div = renderListItem(item);
+        listContainerEl.append(div);
+    });
+}
