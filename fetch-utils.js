@@ -39,7 +39,12 @@ export async function createListItem(item) {
 }
 
 export async function getListItems() {
-    const response = await client.from('shopping_list').select('*');
+    const response = await client.from('shopping_list').select('*, departments (department)');
+    return response.data;
+}
+
+export async function getDepartments() {
+    const response = await client.from('departments').select('*');
     return response.data;
 }
 

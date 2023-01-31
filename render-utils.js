@@ -3,7 +3,14 @@ export function renderListItem(item) {
     const p = document.createElement('p');
 
     item.is_bought ? div.classList.add('notBought') : div.classList.add('bought');
-    p.textContent = `${item.quantity} x ${item.item}`;
+    p.textContent = `${item.quantity} x ${item.item} from ${item.departments.department}`;
     div.append(p);
     return div;
+}
+
+export function renderDepartmentOption(option) {
+    const deptOption = document.createElement('option');
+    deptOption.textContent = option.department;
+    deptOption.value = option.id;
+    return deptOption;
 }

@@ -1,18 +1,28 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { checkAuth, createListItem, getListItems, buyItem, deleteList } from './fetch-utils.js';
-import { renderListItem } from './render-utils.js';
+import {
+    checkAuth,
+    createListItem,
+    getListItems,
+    buyItem,
+    deleteList,
+    getDepartments,
+} from './fetch-utils.js';
+import { renderDepartmentOption, renderListItem } from './render-utils.js';
 checkAuth();
 /* Get DOM Elements */
 const formEl = document.querySelector('.add-item-form');
 const listContainerEl = document.querySelector('#list-container');
 const deleteButtonEl = document.querySelector('#delete-list');
+const deptSelectEl = document.querySelector('#dept-select');
 /* State */
 let itemsData = [];
+let deptData = [];
 /* Events */
 window.addEventListener('load', async () => {
     fetchAndDisplayList();
+    fetchAndDisplayDepartments();
 });
 
 formEl.addEventListener('submit', async (e) => {
@@ -31,6 +41,7 @@ deleteButtonEl.addEventListener('click', async () => {
 /* Display Functions */
 async function fetchAndDisplayList() {
     itemsData = await getListItems();
+    console.log(itemsData);
     listContainerEl.textContent = '';
     itemsData.forEach((item) => {
         const div = renderListItem(item);
@@ -41,5 +52,13 @@ async function fetchAndDisplayList() {
             });
         }
         listContainerEl.append(div);
+    });
+}
+
+async function fetchAndDisplayDepartments() {
+    deptData = await getDepartments();
+    deptData.forEach((dept) => {
+        const option = renderDepartmentOption(dept);
+        deptSelectEl.append(option);
     });
 }
