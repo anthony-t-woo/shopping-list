@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { checkAuth } from './fetch-utils.js';
+import { checkAuth, createListItem } from './fetch-utils.js';
 
 checkAuth();
 
@@ -16,6 +16,6 @@ formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(formEl);
     const insert = { item: formData.get('item'), quantity: formData.get('qty') };
-    console.log(insert);
+    await createListItem(insert);
 });
 /* Display Functions */
