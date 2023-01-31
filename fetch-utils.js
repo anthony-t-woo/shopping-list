@@ -42,3 +42,7 @@ export async function getListItems() {
     const response = await client.from('shopping_list').select('*');
     return response.data;
 }
+
+export async function buyItem(id) {
+    await client.from('shopping_list').update({ is_bought: true }).eq('id', id);
+}

@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { checkAuth, createListItem, getListItems } from './fetch-utils.js';
+import { checkAuth, createListItem, getListItems, buyItem } from './fetch-utils.js';
 import { renderListItem } from './render-utils.js';
 checkAuth();
 /* Get DOM Elements */
@@ -28,6 +28,11 @@ async function fetchAndDisplayList() {
     listContainerEl.textContent = '';
     itemsData.forEach((item) => {
         const div = renderListItem(item);
+        if (!item.bought) {
+            div.addEventListener('click', async () => {
+                await buyItem(item.id);
+            });
+        }
         listContainerEl.append(div);
     });
 }
