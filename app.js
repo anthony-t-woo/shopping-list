@@ -31,6 +31,7 @@ async function fetchAndDisplayList() {
         if (!item.bought) {
             div.addEventListener('click', async () => {
                 await buyItem(item.id);
+                fetchAndDisplayList();
             });
         }
         listContainerEl.append(div);
