@@ -51,6 +51,9 @@ body {
 
 main {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .avatar {
@@ -68,4 +71,71 @@ main {
 
 .hidden {
     display: none;
+}
+
+#list-container div {
+    height: 30px;
+    width: 350px;
+    background-color: rgb(219, 219, 140);
+    border-bottom: 2px solid cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+#list-header {
+    height: 50px;
+    width: 450px;
+    background-color: rgb(219, 219, 140);
+    border-bottom: 4px solid cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#list-footer {
+    height: 40px;
+    width: 350px;
+    background-color: rgb(219, 219, 140);
+}
+.shopping-list-section {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gloria Hallelujah', cursive;
+    box-shadow: 10px 10px 8px rgb(46, 44, 44);
+}
+.center-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section {
+    display: flex;
+    flex-direction: row;
+}
+.empty-space {
+    width: 50px;
+    background-color: rgb(219, 219, 140);
+}
+
+#empty-space-left {
+    border-right: 4px solid rgb(228, 95, 117);
+}
+
+#empty-space-right {
+    border-left: 4px solid rgb(228, 95, 117);
+}
+
+#delete-list {
+    height: 60px;
+    width: 100px;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: pink;
+}
+.bought {
+    text-decoration: line-through;
+}
+
+.notBought:hover {
+    cursor: pointer;
 }
