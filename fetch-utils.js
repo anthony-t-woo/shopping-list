@@ -29,7 +29,6 @@ export async function signOutUser() {
 
 export function checkAuth() {
     const user = getUser();
-    console.log(user);
 
     if (!user) location.replace('/auth');
 }

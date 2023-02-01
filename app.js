@@ -34,7 +34,7 @@ formEl.addEventListener('submit', async (e) => {
         department_id: formData.get('dept'),
     };
     formEl.reset();
-    console.log(insert);
+
     await createListItem(insert);
     fetchAndDisplayList();
 });
@@ -46,7 +46,6 @@ deleteButtonEl.addEventListener('click', async () => {
 /* Display Functions */
 async function fetchAndDisplayList() {
     itemsData = await getListItems();
-    console.log(itemsData);
     listContainerEl.textContent = '';
     itemsData.forEach((item) => {
         const div = renderListItem(item);

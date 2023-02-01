@@ -29,6 +29,10 @@
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
         <!-- add link for page specific css -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
+            rel="stylesheet"
+        />
     </head>
 
     <body>
@@ -48,12 +52,23 @@
                 <label
                     >Department<select name="dept" id="dept-select">
                         <option value="">select a department</option>
-                    </select></label
-                >
+                    </select>
+                </label>
                 <button>Create</button>
             </form>
             <button id="delete-list">Delete Entire List</button>
-            <div id="list-container"></div>
+            <section class="shopping-list-section">
+                <div id="list-header"><h3>Don't Forget to Buy</h3></div>
+                <section class="bottom-section">
+                    <div class="empty-space" id="empty-space-left"></div>
+                    <section class="center-section">
+                        <div id="list-container"></div>
+                        <div id="list-footer"></div>
+                    </section>
+
+                    <div class="empty-space" id="empty-space-right"></div>
+                </section>
+            </section>
         </main>
     </body>
 </html>
